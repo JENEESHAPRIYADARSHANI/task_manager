@@ -21,5 +21,9 @@ Route::middleware('auth')->group(function () {
 Route::get ('/task', [TaskController::class, 'index'])->name('task.index');
 Route::get ('/task/create', [TaskController::class, 'create'])->name('task.create');
 Route::post ('/task', [TaskController::class, 'store'])->name('task.store');
+Route::get ('/task{task}/edit', [TaskController::class, 'edit'])->name('task.edit');
+//this one is get because it only edit the data
+Route::put ('/task{task}/update', [TaskController::class, 'update'])->name('task.update');
+Route::delete ('/task{task}/delete', [TaskController::class, 'delete'])->name('task.delete');
 
 require __DIR__.'/auth.php';

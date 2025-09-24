@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1> Create a Task</h1>
+    <h1> Edit Task</h1>
     <div>
         @if ($errors->any())
             <div>
@@ -18,31 +18,30 @@
             </div>
             @endif
     </div>
-    <form action="{{route('task.store')}}" method="POST">
+    <form action="{{route('task.update', ['task' =>$task])}}" method="POST">
         @csrf
-        @method('post')
+        @method('put')
         <div >
             <label for="title">Title</label>
-            <input type="text" name="title" id="title">
+            <input type="text" name="title" id="title" value="{{ $task->title }}">
         </div>
         <div >
             <label for="description">Description</label>
-            <textarea name="description" id="description" cols="30" rows="10"></textarea>
+            <textarea name="description" id="description" cols="30" rows="10">{{ $task->description }}</textarea>
         </div>
         <div >
             <label for="status">Status</label>
             <select name="status" id="status">
-                <option value="pending">Pending</option>
-                <option value="done">Done</option>
+                <option value="pending" {{ $task->status == 'pending' ? 'selected' : '' }}>Pending</option>
+                <option value="done" {{ $task->status == 'done' ? 'selected' : '' }}>Done</option>
             </select>
 
         </div>
         <div >
-            <input type="submit" value="Create Task">
+            <input type="submit" value="Update Task">
         </div>
 
         
         </form>
-        
 </body>
 </html>
