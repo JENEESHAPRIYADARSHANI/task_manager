@@ -26,7 +26,7 @@ A simple Task Manager application built with **Laravel 12.30.1** (Backend + Fron
 
 * PHP 8.2+
 * Composer
-* MySQL / MariaDB
+* MySQL 
 * Node.js & npm 
 * Laravel 12
 
